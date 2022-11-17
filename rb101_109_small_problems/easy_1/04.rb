@@ -60,3 +60,27 @@ def count_occurrences(array)
 end
 
 count_occurrences(vehicles)
+
+
+
+
+#further => solve problem when elements are caseinsensitive 
+#downcase the whole array prior to performing the comparision 
+def count_occurrences(array)
+  occurances = {}
+  case_insensitive_array = array.map {|element| element.downcase}
+  case_insensitive_array.uniq.each do |element|
+    occurances[element] = case_insensitive_array.count(element)
+  end
+
+  occurances.each do |element, count|
+    puts "#{element} => #{count}"
+  end 
+end
+
+
+vehicles = [
+  'car', 'Car', 'truck', 'car', 'SUV', 'tRuck',
+  'motoRcycle', 'motorcycle', 'caR', 'trucK'
+]
+count_occurrences(vehicles)
