@@ -79,3 +79,46 @@ array == [3, 5]
 array = [6, 2, 7, 1, 4]
 bubble_sort!(array)
 array == [1, 2, 4, 6, 7]
+
+
+
+#thier soultion is more consices 
+
+
+def bubble_sort!(array)
+  loop do 
+    swapped = false
+    1.upto(array.size - 1) do |index|
+      next if array[index -1] <= array[index]
+      array[index -1], array[index] = [array[index], array[index - 1]]
+      swapped = true
+    end 
+
+    break unless swapped
+  end
+end
+
+
+
+#further exploration optomized solution 
+
+def bubble_sort!(array)
+  n = array.size - 1
+  loop do 
+    swapped = false
+    1.upto(n) do |index|
+      next if array[index -1] <= array[index]
+      array[index -1], array[index] = [array[index], array[index - 1]]
+      swapped = true
+    end 
+
+    n -= 1
+    break unless swapped
+  end
+end
+
+# this is very cool, basically every round the largest number will 
+# be placed at the end of the array 
+# then the second largest will be next round 
+# then the third ect... so you can decreased the length of search every round 
+# by 1 element 
