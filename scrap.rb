@@ -1,77 +1,45 @@
-require 'pry'
+=begin
+Write a method that takes one argument, a positive integer, and returns a list of the digits in the number.
 
-def sum_pairs(ints, s)
-  pairs = []
+Examples:
+puts digit_list(12345) == [1, 2, 3, 4, 5]     # => true
+puts digit_list(7) == [7]                     # => true
+puts digit_list(375290) == [3, 7, 5, 2, 9, 0] # => true
+puts digit_list(444) == [4, 4, 4]             # => true
 
+--------------------- P
+input: 
+output: 
+  goal: 
+rules: 
+  Explicit: 
+    - 
+    - 
+  Implicit: 
+    -
+    - 
+--------------------- E
 
-ints.each_with_index do |first, idx1|
-  target = s - first
-  if ints.include?(target)
-    idx2 = ints.index(target)
-    if idx2 == idx1 &&  ints.count(first) > 1 
-      subints = ints[(idx1+1)..-1]
-      idx2 = subints.index(target) + idx1 + 1
-    elsif idx2 <= idx1
-      next
-    end 
-    pairs << [idx1, idx2]
-  end 
-end
+--------------------- D
+array
+--------------------- A
+holder array []
+loop do 
+  num, remainder =  num.divmod 10 
+  hodlder.prepend (reminder)
+  break if num <= 0 
+end 
 
-  sorted = pairs.sort_by {|first,second| second }
-  
-  sorted.first.map {|idx| ints[idx] }
- 
- end 
-
-p sum_pairs([1, 4, 8, 7, 3, 15], 8)
-
-
-
-
-
-
-
-
-
-
-# ints.each_with_index do |first, idx1|
-#   break if idx1 == ints.size - 1
-#   target = s - first
-#   subints = ints[(idx1+1)..-1]
-#   if ints[(idx1+1)..-1].include?(target)
-#     idx2 = subints.index(target) + idx1 + 1
-#     pairs << [idx1, idx2]
-#   end 
-# end
+holder array
+=end
 
 
+def digit_list(num)
+  num.digits.reverse
+end 
 
 
-
-
-
-
-# firstidxs = []
-# secondidxs = []
-# pairs = []
- 
-# ints.each_with_index do |first, idx1|
-  
-#   idx2 = idx1 +1 
-#   while idx2 < ints.size
-#     if first + ints[idx2] == s 
-#       firstidxs << idx1
-#       secondidxs << idx2
-#       break
-#     end
-#     idx2 += 1
-#   end
-
-#   if firstidxs.max >= secondidxs.max
-#     break if !firstidxs.empty?
-#   end  
-# end
-
-# pairs = firstidxs.zip(secondidxs)
-# p pairs
+p digit_list(12345) #== [1, 2, 3, 4, 5]     # => true
+p digit_list(7) #== [7]                     # => true
+p digit_list(375290) #== [3, 7, 5, 2, 9, 0] # => true
+p digit_list(444) #== [4, 4, 4]             # => true
