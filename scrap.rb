@@ -1,45 +1,38 @@
-=begin
-Write a method that takes one argument, a positive integer, and returns a list of the digits in the number.
+LOWERCASE_ALPHABET = ('a'..'z').to_a.freeze
+UPPERCASE_ALPHABET = ('A'..'Z').to_a.freeze
 
-Examples:
-puts digit_list(12345) == [1, 2, 3, 4, 5]     # => true
-puts digit_list(7) == [7]                     # => true
-puts digit_list(375290) == [3, 7, 5, 2, 9, 0] # => true
-puts digit_list(444) == [4, 4, 4]             # => true
+def rot13(name)
+  name.chars.inject('') do |result, letter|
+    result + decipher_letter(letter)
+  end
+end
 
---------------------- P
-input: 
-output: 
-  goal: 
-rules: 
-  Explicit: 
-    - 
-    - 
-  Implicit: 
-    -
-    - 
---------------------- E
+def decipher_letter(letter)
+  if LOWERCASE_ALPHABET.include?(letter)
+    LOWERCASE_ALPHABET[LOWERCASE_ALPHABET.index(letter) - 13]
+  elsif UPPERCASE_ALPHABET.include?(letter)
+    UPPERCASE_ALPHABET[UPPERCASE_ALPHABET.index(letter) - 13]
+  else
+    letter
+  end
+end
 
---------------------- D
-array
---------------------- A
-holder array []
-loop do 
-  num, remainder =  num.divmod 10 
-  hodlder.prepend (reminder)
-  break if num <= 0 
-end 
-
-holder array
-=end
-
-
-def digit_list(num)
-  num.digits.reverse
-end 
-
-
-p digit_list(12345) #== [1, 2, 3, 4, 5]     # => true
-p digit_list(7) #== [7]                     # => true
-p digit_list(375290) #== [3, 7, 5, 2, 9, 0] # => true
-p digit_list(444) #== [4, 4, 4]             # => true
+p rot13('Nqn Ybirynpr')
+p rot13('Tenpr Ubccre')
+p rot13('Nqryr Tbyqfgvar')
+p rot13('Nyna Ghevat')
+p rot13('Puneyrf Onoontr')
+p rot13('Noqhyynu Zhunzznq ova Zhfn ny-Xujnevmzv')
+p rot13('Wbua Ngnanfbss')
+p rot13('Ybvf Unvog')
+p rot13('Pynhqr Funaaba')
+p rot13('Fgrir Wbof')
+p rot13('Ovyy Tngrf')
+p rot13('Gvz Orearef-Yrr')
+p rot13('Fgrir Jbmavnx')
+p rot13('Xbaenq Mhfr')
+p rot13('Fve Nagbal Ubner')
+p rot13('Zneiva Zvafxl')
+p rot13('Lhxvuveb Zngfhzbgb')
+p rot13('Unllvz Fybavzfxv')
+p rot13('Tregehqr Oynapu')
